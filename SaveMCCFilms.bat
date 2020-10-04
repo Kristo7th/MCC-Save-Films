@@ -1,5 +1,5 @@
 @echo off
-rem Made by Vass "Kristo" Krisztian | Twitter @KristoRails | Version 1.1
+rem Made by Vass "Kristo" Krisztian | Twitter @KristoRails | Version 1.3
 
 rem MCC films & maps & gametypes (Halo 2A, Halo 3, Halo ODST, Halo:Reach and Halo 4) saved in their specific folders
 rem 5 minute loop
@@ -49,7 +49,15 @@ for %%X in ("C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1
 
 :loop_start
 
-rem Rename Films format: MAP - TIME (local time)
+set hour=%time:~0,2%
+if "%hour:~0,1%" == " " set hour=0%hour:~1,1%
+echo hour=%hour%
+set min=%time:~3,2%
+if "%min:~0,1%" == " " set min=0%min:~1,1%
+echo min=%min%
+set secs=%time:~6,2%
+if "%secs:~0,1%" == " " set secs=0%secs:~1,1%
+echo secs=%secs%
 
 
 rem Copy Halo 3 films
@@ -108,12 +116,14 @@ set /A index=0
 :player_loop
 	if %index%==%count% GOTO END
 		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_1829_0_0.xml" "//Player[%index%]/@mGamertagText"') do set "Player=%%#"
+		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_1829_0_0.xml" "//Player[%index%]/@Score"') do set "Score=%%#"
 		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_1829_0_0.xml" "//Player[%index%]/@mKills"') do set "Kills=%%#"
 		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_1829_0_0.xml" "//Player[%index%]/@mAssists"') do set "Assists=%%#"
 		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_1829_0_0.xml" "//Player[%index%]/@mDeaths"') do set "Deaths=%%#"
 		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_1829_0_0.xml" "//Player[%index%]/@mTeamId"') do set "Team=%%#"
 
 	set names[%index%]=%Player%
+	set scores[%index%]=%Score%
 	set kills[%index%]=%Kills%
 	set assists[%index%]=%Assists%
 	set deaths[%index%]=%Deaths%
@@ -142,11 +152,16 @@ echo TIME OF GAME: %TIME%>> C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"
 call echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
 
 set /A i = 0
- 
+
+rem Thankfully the XML MCC provides is organizes players by who won first.
+rem If you see this comment, CE takes the most skill out of all Halos
 :carnage_loop
 	if defined names[%i%]  (  
         call echo Player: %%names[%i%]%% Kills: %%kills[%i%]%% Assists: %%assists[%i%]%% Deaths: %%deaths[%i%]%% Team: %%team[%i%]%%>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
         call echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
+		rem Creating XML report
+		echo ^<player-info^>^<Player=!names[%i%]!^>^<Score=!scores[%i%]!^>^<Kills=!kills[%i%]!^>^<Deaths=!deaths[%i%]!^>^<Assists=!assists[%i%]!^>^<Team=!team[%i%]!^>^</player-info^> >>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
+		echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
 		set /a i = %i% + 1         
         goto :carnage_loop     
     )
@@ -156,16 +171,7 @@ call echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Car
 
 :no_carnage
 
-
-set hour=%time:~0,2%
-if "%hour:~0,1%" == " " set hour=0%hour:~1,1%
-echo hour=%hour%
-set min=%time:~3,2%
-if "%min:~0,1%" == " " set min=0%min:~1,1%
-echo min=%min%
-set secs=%time:~6,2%
-if "%secs:~0,1%" == " " set secs=0%secs:~1,1%
-echo secs=%secs%
+rem Rename Films format: MAP - TIME (local time)
 
 set construct=asq_constr
 set epitaph=asq_salvat
