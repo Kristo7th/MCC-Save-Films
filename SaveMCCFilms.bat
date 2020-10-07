@@ -203,33 +203,41 @@ for %%F in (C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo 3"\"Halo 3 - "%date:~-
   set source=%%~nxF
   set path=%%F
   echo !path!
-  echo !source!
+  echo Movie name: !source!
+  echo "C:\Users\%USERNAME%\Desktop\MCC Films\Halo 3\Halo 3 - %date:~-10,2%-%date:~7,2%-%date:~-4,4%\!source!"
   set halo3_map=!source:~0,10!
-  echo !halo3_map!
-  if "!halo3_map!"=="!construct!" (rename "!path!" "Construct %hour%.%min%.mov")
-  if "!halo3_map!"=="!epitaph!" (rename "!path!" "Epitaph %hour%.%min%.mov")
-  if "!halo3_map!"=="!guardian!" (rename "!path!" "Guardian %hour%.%min%.mov")
-  if "!halo3_map!"=="!highground!" (rename "!path!" "High Ground %hour%.%min%.mov")
-  if "!halo3_map!"=="!isolation!" (rename "!path!" "Isolation %hour%.%min%.mov")
-  if "!halo3_map!"=="!lastresort!" (rename "!path!" "Last Resort %hour%.%min%.mov")
-  if "!halo3_map!"=="!narrows!" (rename "!path!" "Narrows %hour%.%min%.mov")
-  if "!halo3_map!"=="!sandtrap!" (rename "!path!" "Sandtrap %hour%.%min%.mov")
-  if "!halo3_map!"=="!snowboad!" (rename "!path!" "Snowbound %hour%.%min%.mov")
-  if "!halo3_map!"=="!pit!" (rename "!path!" "Pit %hour%.%min%.mov")
-  if "!halo3_map!"=="!valhalla!" (rename "!path!" "Valhalla %hour%.%min%.mov")
-  if "!halo3_map!"=="!foundry!" (rename "!path!" "Foundry %hour%.%min%.mov")
-  if "!halo3_map!"=="!ratnest!" (rename "!path!" "Rat's Nest %hour%.%min%.mov")
-  if "!halo3_map!"=="!standoff!" (rename "!path!" "Standoff %hour%.%min%.mov")
-  if "!halo3_map!"=="!avalanche!" (rename "!path!" "Avalanche %hour%.%min%.mov")
-  if "!halo3_map!"=="!blackout!" (rename "!path!" "Blackout %hour%.%min%.mov")
-  if "!halo3_map!"=="!ghosttown!" (rename "!path!" "Ghost Town %hour%.%min%.mov")
-  if "!halo3_map!"=="!coldstorage!" (rename "!path!" "Cold Storage %hour%.%min%.mov")
-  if "!halo3_map!"=="!assembly!" (rename "!path!" "Assembly %hour%.%min%.mov")
-  if "!halo3_map!"=="!orbital!" (rename "!path!" "Orbital %hour%.%min%.mov")
-  if "!halo3_map!"=="!sandbox!" (rename "!path!" "Sandbox %hour%.%min%.mov")
-  if "!halo3_map!"=="!citadel!" (rename "!path!" "Citadel %hour%.%min%.mov")
-  if "!halo3_map!"=="!heretic!" (rename "!path!" "Heretic %hour%.%min%.mov")
-  if "!halo3_map!"=="!longshore!" (rename "!path!" "Longshore %hour%.%min%.mov")
+  for %%a in ("C:\Users\%USERNAME%\Desktop\MCC Films\Halo 3\Halo 3 - %date:~-10,2%-%date:~7,2%-%date:~-4,4%\!source!") do set FileDate=%%~ta
+  echo !FileDate!
+  set game_hour=!FileDate:~11,2!
+  set game_minute=!FileDate:~14,2!
+  set moment=!FileDate:~17,2!
+  echo !game_hour! !game_minute! !moment!
+  set created=!game_hour! !game_minute! !moment!
+  echo !created!
+  if "!halo3_map!"=="!construct!" (rename "!path!" "Construct_!created!.mov")
+  if "!halo3_map!"=="!epitaph!" (rename "!path!" "Epitaph_!created!.mov")
+  if "!halo3_map!"=="!guardian!" (rename "!path!" "Guardian_!created!.mov")
+  if "!halo3_map!"=="!highground!" (rename "!path!" "High Ground_!created!.mov")
+  if "!halo3_map!"=="!isolation!" (rename "!path!" "Isolation_!created!.mov")
+  if "!halo3_map!"=="!lastresort!" (rename "!path!" "Last Resort_!created!.mov")
+  if "!halo3_map!"=="!narrows!" (rename "!path!" "Narrows_!created!.mov")
+  if "!halo3_map!"=="!sandtrap!" (rename "!path!" "Sandtrap_!created!.mov")
+  if "!halo3_map!"=="!snowboad!" (rename "!path!" "Snowbound_!created!.mov")
+  if "!halo3_map!"=="!pit!" (rename "!path!" "Pit_!created!.mov")
+  if "!halo3_map!"=="!valhalla!" (rename "!path!" "Valhalla_!created!.mov")
+  if "!halo3_map!"=="!foundry!" (rename "!path!" "Foundry_!created!.mov")
+  if "!halo3_map!"=="!ratnest!" (rename "!path!" "Rat's Nest_!created!.mov")
+  if "!halo3_map!"=="!standoff!" (rename "!path!" "Standoff_!created!.mov")
+  if "!halo3_map!"=="!avalanche!" (rename "!path!" "Avalanche_!created!.mov")
+  if "!halo3_map!"=="!blackout!" (rename "!path!" "Blackout_!created!.mov")
+  if "!halo3_map!"=="!ghosttown!" (rename "!path!" "Ghost Town_!created!.mov")
+  if "!halo3_map!"=="!coldstorage!" (rename "!path!" "Cold Storage_!created!.mov")
+  if "!halo3_map!"=="!assembly!" (rename "!path!" "Assembly_!created!.mov")
+  if "!halo3_map!"=="!orbital!" (rename "!path!" "Orbital_!created!.mov")
+  if "!halo3_map!"=="!sandbox!" (rename "!path!" "Sandbox_!created!.mov")
+  if "!halo3_map!"=="!citadel!" (rename "!path!" "Citadel_!created!.mov")
+  if "!halo3_map!"=="!heretic!" (rename "!path!" "Heretic_!created!.mov")
+  if "!halo3_map!"=="!longshore!" (rename "!path!" "Longshore_!created!.mov")
   echo. 
 )
 
