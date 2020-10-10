@@ -4,7 +4,7 @@ rem Made by Vass "Kristo" Krisztian | Twitter @KristoRails | Version 1.5
 rem MCC films & maps & gametypes (Halo 2A, Halo 3, Halo ODST, Halo:Reach and Halo 4) saved in their specific folders
 rem 5 minute loop
 
-ECHO "Made by Vass 'Kristo' Krisztian | Twitter @KristoRails | Version 1.1"
+ECHO "Made by Vass 'Kristo' Krisztian | Twitter @KristoRails | Version 1.5"
 ECHO.
 ECHO The script automatically saves your films and carnages every 60 seconds. Because of how MCC is made, I recommend going into theater mode every 8-10 games to force MCC to generate the films
 ECHO It will generate them in time but going into theater mode forces it to make them quicker.
