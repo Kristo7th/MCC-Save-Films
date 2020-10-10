@@ -1,3 +1,7 @@
+Version 1.5
+- Updated the film names for Halo Reach and Halo 2 Anniversary. Thanks Bungie and 343i for naming your maps like this: asq_mlgo_1_dlc_slaye.
+- Next update I'll work on the carnage report. For now it's creating a text file and an XML file which I will need to generate a HTML page to show the carnage.
+
 Version 1.4
 - Updated the naming for the films. The script would save all your films but would rename only one of them because the date would be the same for all.
 What I did is I changed so that it adds the date it was created by MCC.
