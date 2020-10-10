@@ -7,8 +7,8 @@ Here's how it works:
 - You run the script and it will create a folder called "MCC Films" on your Desktop.
 - In "MCC Films" you will find multiple folders for each Halo, folders labeled by the DATE of your current session
 - The script runs every 1 minute (or you can skip the 1 minute wait) then it does its thing.
-- You can play and let the script run in the background. However, since MCC has some "issues" I recommend going into theater mode or into your "My Files, Films"
-every 8-10 games, to force MCC to generate the films.
+- You can play and let the script run in the background. However, since MCC has some "issues" I recommend going into theater mode every 8-10 games,
+to force MCC to generate the films.
 - The script WILL delete your films, but will put them in their respective folders. Do not worry if you can't watch a film right off the bat, it means it was
 moved, you just have to stop the script and put your film back in the folder. (Will probably change it, or come up with a better solution)
 
@@ -19,7 +19,3 @@ it in the folder mentioned above.
 a game of Halo 3 it will remove the oldest file and create a new one for the most recent Halo you played.
 - MCC will only detect 12 films when put in the temporary folder. Even if you put 100 films it will only show 12 in the game.
 - If you find any issues, please let me know @KristoRails on Twitter
-
-!EXTRA IMPORTANT!
-- The Xpath.bat is taken from: https://github.com/npocmaka/batch.scripts/blob/master/hybrids/jscript/xpath.bat 
-- Many thanks to 'npocmaka' for creating it, it really helped me out!
