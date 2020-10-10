@@ -1,5 +1,5 @@
 @echo off
-rem Made by Vass "Kristo" Krisztian | Twitter @KristoRails | Version 1.3
+rem Made by Vass "Kristo" Krisztian | Twitter @KristoRails | Version 1.5
 
 rem MCC films & maps & gametypes (Halo 2A, Halo 3, Halo ODST, Halo:Reach and Halo 4) saved in their specific folders
 rem 5 minute loop
@@ -171,7 +171,9 @@ call echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Car
 
 :no_carnage
 
-rem Rename Films format: MAP - TIME (local time)
+rem Rename Films format: MAP - TIME (time the film was created by MCC)
+
+rem Halo 3 maps
 
 set construct=asq_constr
 set epitaph=asq_salvat
@@ -238,6 +240,103 @@ for %%F in (C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo 3"\"Halo 3 - "%date:~-
   if "!halo3_map!"=="!citadel!" (rename "!path!" "Citadel_!created!.mov")
   if "!halo3_map!"=="!heretic!" (rename "!path!" "Heretic_!created!.mov")
   if "!halo3_map!"=="!longshore!" (rename "!path!" "Longshore_!created!.mov")
+  echo. 
+)
+
+rem Halo 2A maps
+set shrine=ca_sanctu
+set lockout=ca_lockou
+set warlock=ca_warloc
+set ascension=ca_ascens
+set zanzibar=ca_zanzib
+set bloodgulch=ca_coagul
+set remnant=ca_relic_
+
+for %%F in (C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo 2A"\"Halo 2A - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%\*.mov) do (
+  set source=%%~nxF
+  set path=%%F
+  echo !path!
+  echo Movie name: !source!
+  echo "C:\Users\%USERNAME%\Desktop\MCC Films\Halo 2A\Halo 2A - %date:~-10,2%-%date:~7,2%-%date:~-4,4%\!source!"
+  set halo2A_map=!source:~11,9!
+  for %%a in ("C:\Users\%USERNAME%\Desktop\MCC Films\Halo 2A\Halo 2A - %date:~-10,2%-%date:~7,2%-%date:~-4,4%\!source!") do set FileDate=%%~ta
+  echo !FileDate!
+  set game_hour=!FileDate:~11,2!
+  set game_minute=!FileDate:~14,2!
+  set moment=!FileDate:~17,2!
+  echo !game_hour! !game_minute! !moment!
+  set created=!game_hour! !game_minute! !moment!
+  echo !created!
+  if "!halo2A_map!"=="!shrine!" (rename "!path!" "Shrine_!created!.mov")
+  if "!halo2A_map!"=="!lockout!" (rename "!path!" "Lockout_!created!.mov")
+  if "!halo2A_map!"=="!warlock!" (rename "!path!" "Warlock_!created!.mov")
+  if "!halo2A_map!"=="!ascension!" (rename "!path!" "Ascension_!created!.mov")
+  if "!halo2A_map!"=="!zanzibar!" (rename "!path!" "Zanzibar_!created!.mov")
+  if "!halo2A_map!"=="!bloodgulch!" (rename "!path!" "Blood Gulch_!created!.mov")
+  if "!halo2A_map!"=="!remnant!" (rename "!path!" "Remnant_!created!.mov")
+  echo. 
+)
+
+rem Halo Reach Maps
+
+set boardwalk=50_panopt
+set boneyard=70_boneya
+set countdown=45_launch
+set powerhouse=30_settle
+set reflection=52_ivory_
+set spire=35_island
+set swordbase=20_sword_
+set zealot=45_aftshi
+set anchor=dlc_slaye
+set breakpoint=dlc_invas
+set tempest=dlc_mediu
+set condemned=condemned
+set highlands=trainingp
+set battlecanyon=cex_beave
+set penance=cex_damna
+set ridgeline=cex_timbe
+set solitary=cex_priso
+set highnoon=cex_hange
+set breakneck=cex_headl
+set forgeworld=forge_hal
+
+
+for %%F in (C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo Reach"\"Halo Reach - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%\*.mov) do (
+  set source=%%~nxF
+  set path=%%F
+  echo !path!
+  echo Movie name: !source!
+  echo "C:\Users\%USERNAME%\Desktop\MCC Films\Halo Reach\Halo Reach - %date:~-10,2%-%date:~7,2%-%date:~-4,4%\!source!"
+  set haloreach_map=!source:~11,9!
+  for %%a in ("C:\Users\%USERNAME%\Desktop\MCC Films\Halo Reach\Halo Reach - %date:~-10,2%-%date:~7,2%-%date:~-4,4%\!source!") do set FileDate=%%~ta
+  echo !FileDate!
+  set game_hour=!FileDate:~11,2!
+  set game_minute=!FileDate:~14,2!
+  set moment=!FileDate:~17,2!
+  echo !game_hour! !game_minute! !moment!
+  set created=!game_hour! !game_minute! !moment!
+  echo !created!
+  if "!haloreach_map!"=="!boardwalk!" (rename "!path!" "Boardwalk_!created!.mov")
+  if "!haloreach_map!"=="!boneyard!" (rename "!path!" "Boneyard!created!.mov")
+  if "!haloreach_map!"=="!countdown!" (rename "!path!" "Countdown_!created!.mov")
+  if "!haloreach_map!"=="!powerhouse!" (rename "!path!" "Powerhouse_!created!.mov")
+  if "!haloreach_map!"=="!reflection!" (rename "!path!" "Reflection_!created!.mov")
+  if "!haloreach_map!"=="!spire!" (rename "!path!" "Spire_!created!.mov")
+  if "!haloreach_map!"=="!swordbase!" (rename "!path!" "Sword Base_!created!.mov")
+  if "!haloreach_map!"=="!zealot!" (rename "!path!" "Zealot_!created!.mov")
+  if "!haloreach_map!"=="!anchor!" (rename "!path!" "Anchor 9_!created!.mov")
+  if "!haloreach_map!"=="!breakpoint!" (rename "!path!" "Breakpoint_!created!.mov")
+  if "!haloreach_map!"=="!condemned!" (rename "!path!" "Condemned_!created!.mov")
+  if "!haloreach_map!"=="!highlands!" (rename "!path!" "Highlands_!created!.mov")
+  if "!haloreach_map!"=="!battlecanyon!" (rename "!path!" "Battle Canyon_!created!.mov")
+  if "!haloreach_map!"=="!penance!" (rename "!path!" "Penance_!created!.mov")
+  if "!haloreach_map!"=="!ridgeline!" (rename "!path!" "Ridgeline_!created!.mov")
+  if "!haloreach_map!"=="!solitary!" (rename "!path!" "Solitary_!created!.mov")
+  if "!haloreach_map!"=="!highnoon!" (rename "!path!" "Highnoon_!created!.mov")
+  if "!haloreach_map!"=="!breakneck!" (rename "!path!" "Breakneck_!created!.mov")
+  if "!haloreach_map!"=="!forgeworld!" (rename "!path!" "Forge World_!created!.mov")
+  if "!haloreach_map!"=="!tempest!" (rename "!path!" "Tempest_!created!.mov")
+  
   echo. 
 )
 
