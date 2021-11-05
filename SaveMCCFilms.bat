@@ -155,16 +155,19 @@ set /A i = 0
 
 rem Thankfully the XML MCC provides is organizes players by who won first.
 rem If you see this comment, CE takes the most skill out of all Halos
+
+echo ^<playerInfo^> >>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
 :carnage_loop
 	if defined names[%i%]  (  
         call echo Player: %%names[%i%]%% Kills: %%kills[%i%]%% Assists: %%assists[%i%]%% Deaths: %%deaths[%i%]%% Team: %%team[%i%]%%>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
         call echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
 		rem Creating XML report
-		echo ^<playerinfo^>^<Player^>!names[%i%]!^>^</Player^>^<Score^>!scores[%i%]!^>^</Score^>^<Kills^>!kills[%i%]!^>^</Kills^>^<Deaths^>!deaths[%i%]!^>^</Deaths^>^<Assists^>!assists[%i%]!^>^</Assists^>^<Team^>!team[%i%]!^>^</Team^>^</playerinfo^> >>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
+		echo ^<Player^>!names[%i%]!^</Player^>^<Score^>!scores[%i%]!^</Score^>^<Kills^>!kills[%i%]!^</Kills^>^<Deaths^>!deaths[%i%]!^</Deaths^>^<Assists^>!assists[%i%]!^</Assists^>^<Team^>!team[%i%]!^</Team^>^ >>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
 		echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
 		set /a i = %i% + 1         
         goto :carnage_loop     
     )
+echo ^</playerInfo^> >>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
 call echo ------------------NEW GAME----------------------->>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
 call echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
 )
