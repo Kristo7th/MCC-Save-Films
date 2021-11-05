@@ -160,7 +160,7 @@ rem If you see this comment, CE takes the most skill out of all Halos
         call echo Player: %%names[%i%]%% Kills: %%kills[%i%]%% Assists: %%assists[%i%]%% Deaths: %%deaths[%i%]%% Team: %%team[%i%]%%>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
         call echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype%.txt
 		rem Creating XML report
-		echo ^<player-info^>^<Player=!names[%i%]!^>^<Score=!scores[%i%]!^>^<Kills=!kills[%i%]!^>^<Deaths=!deaths[%i%]!^>^<Assists=!assists[%i%]!^>^<Team=!team[%i%]!^>^</player-info^> >>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
+		echo ^<playerinfo^>^<Player^>!names[%i%]!^>^</Player^>^<Score^>!scores[%i%]!^>^</Score^>^<Kills^>!kills[%i%]!^>^</Kills^>^<Deaths^>!deaths[%i%]!^>^</Deaths^>^<Assists^>!assists[%i%]!^>^</Assists^>^<Team^>!team[%i%]!^>^</Team^>^</playerinfo^> >>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
 		echo.>>C:\Users\%USERNAME%\Desktop\"MCC Films"\"%HaloGame%"\"%HaloGame% Carnage - "%date:~-10,2%"-"%date:~7,2%"-"%date:~-4,4%""\"%HaloGame% %Gametype% %hour% %min% carnage_report.xml
 		set /a i = %i% + 1         
         goto :carnage_loop     
