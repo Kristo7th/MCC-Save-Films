@@ -1,4 +1,4 @@
-All your MCC files are saved in a temporary directory located at (CHANGE %USERNAME% TO YOUR USERNAME):
+All your MCC files are saved in a temporary directory located at (CHANGE %USERNAME% TO YOUR USERNAME if you want to):
 C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\UserContent
 
 You DO NOT have to quit Halo MCC to put your files back in. Just copy them in the temporary folder and refresh Theater Mode (it should appear after)
