@@ -1,5 +1,5 @@
 @echo off
-rem Made by Vass "Kristo" Krisztian | Twitter @TrueKristo | Version 1.6
+rem Made by Vass "Kristo" Krisztian | Twitter @TrueKristo | Version 1.7
 
 rem MCC films & maps & gametypes (Halo 2A, Halo 3, Halo ODST, Halo:Reach and Halo 4) saved in their specific folders
 rem 5 minute loop
@@ -14,7 +14,7 @@ ECHO Thank you for using my script! May your 4 shots be TRUE! If you have any pr
 
 timeout /t 120
 
-rem Created a core folder + Halo folders (I like to be somewhat organized)
+rem Created a core folder + Halo folders
 if not exist C:\Users\%USERNAME%\Desktop\"MCC Films" mkdir C:\Users\%USERNAME%\Desktop\"MCC Films"
 if not exist C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo 3" mkdir C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo 3"
 if not exist C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo 2A" mkdir C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo 2A"
@@ -45,7 +45,7 @@ if not exist C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo CE"\"Halo CE Carnage 
 echo.
 
 rem Saving much needed values
-for %%X in ("C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml") do set filetime=%%~tX
+for %%X in ("C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml") do set filetime=%%~tX
 
 :loop_start
 
@@ -95,15 +95,15 @@ rem create a copy of the carnage
 if !currentFileTime!==!filetime! GOTO :no_carnage else (
 echo !filetime!>C:\Users\%USERNAME%\Desktop\"MCC Films"\carnage_report_date.txt
 
-set "string=findstr /R /N "^^" C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml | find /C "mGamertagText""
+set "string=findstr /R /N "^^" C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml | find /C "mGamertagText""
 for /f %%a in ('!string!') do set count=%%a
 
 rem Get Gametype
-for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//GameTypeName/@GameTypeName"') do set "Gametype=%%#"
+for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//GameTypeName/@GameTypeName"') do set "Gametype=%%#"
 
 rem Get Halo game (mGameEnum)
 rem HaloReach = 6, Halo 3 = 2, CE = 0 , Halo 2 = 1, Halo 2A = 8, Halo ODST = ?
-for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//GameEnum/@mGameEnum"') do set "Halo=%%#"
+for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//GameEnum/@mGameEnum"') do set "Halo=%%#"
 
 if %Halo%==0 set HaloGame=Halo CE
 if %Halo%==1 set HaloGame=Halo 2
@@ -115,12 +115,12 @@ rem Get Player information
 set /A index=0
 :player_loop
 	if %index%==%count% GOTO END
-		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//Player[%index%]/@mGamertagText"') do set "Player=%%#"
-		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//Player[%index%]/@Score"') do set "Score=%%#"
-		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//Player[%index%]/@mKills"') do set "Kills=%%#"
-		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//Player[%index%]/@mAssists"') do set "Assists=%%#"
-		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//Player[%index%]/@mDeaths"') do set "Deaths=%%#"
-		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml" "//Player[%index%]/@mTeamId"') do set "Team=%%#"
+		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//Player[%index%]/@mGamertagText"') do set "Player=%%#"
+		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//Player[%index%]/@Score"') do set "Score=%%#"
+		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//Player[%index%]/@mKills"') do set "Kills=%%#"
+		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//Player[%index%]/@mAssists"') do set "Assists=%%#"
+		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//Player[%index%]/@mDeaths"') do set "Deaths=%%#"
+		for /f "tokens=* delims=" %%# in ('xpath.bat "C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml" "//Player[%index%]/@mTeamId"') do set "Team=%%#"
 
 	set names[%index%]=%Player%
 	set scores[%index%]=%Score%
@@ -346,7 +346,7 @@ for %%F in (C:\Users\%USERNAME%\Desktop\"MCC Films"\"Halo Reach"\"Halo Reach - "
 
 endlocal
 
-for %%X in ("C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_2611_0_0.xml") do set filetime=%%~tX
+for %%X in ("C:\Users\%USERNAME%\AppData\LocalLow\MCC\Temporary\mpcarnagereport1_3385_0_0.xml") do set filetime=%%~tX
 
 timeout /t 60
 cls
